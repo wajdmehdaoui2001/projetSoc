@@ -1,0 +1,62 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://example.com/football"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             name="FootballService"
+             targetNamespace="http://example.com/football">
+
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/football">
+            <element name="GetCompetitionRequest">
+                <complexType>
+                    <sequence>
+                        <element name="competitionId" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="GetCompetitionResponse">
+                <complexType>
+                    <sequence>
+                        <element name="name" type="xsd:string"/>
+                        <element name="area" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+
+    <message name="GetCompetitionRequestMessage">
+        <part name="parameters" element="tns:GetCompetitionRequest"/>
+    </message>
+
+    <message name="GetCompetitionResponseMessage">
+        <part name="parameters" element="tns:GetCompetitionResponse"/>
+    </message>
+
+    <portType name="FootballPortType">
+        <operation name="GetCompetition">
+            <input message="tns:GetCompetitionRequestMessage"/>
+            <output message="tns:GetCompetitionResponseMessage"/>
+        </operation>
+    </portType>
+
+    <binding name="FootballSoapBinding" type="tns:FootballPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetCompetition">
+            <soap:operation soapAction="http://example.com/football/GetCompetition"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="FootballService">
+        <port name="FootballPort" binding="tns:FootballSoapBinding">
+            <soap:address location="http://localhost:8080/ws"/>
+        </port>
+    </service>
+
+</definitions>
