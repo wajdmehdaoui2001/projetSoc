@@ -6,23 +6,9 @@
              targetNamespace="http://example.com/football">
 
     <types>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/football">
-            <element name="GetCompetitionRequest">
-                <complexType>
-                    <sequence>
-                        <element name="competitionId" type="xsd:string"/>
-                    </sequence>
-                </complexType>
-            </element>
-            <element name="GetCompetitionResponse">
-                <complexType>
-                    <sequence>
-                        <element name="name" type="xsd:string"/>
-                        <element name="area" type="xsd:string"/>
-                    </sequence>
-                </complexType>
-            </element>
-        </schema>
+        <xsd:schema>
+            <xsd:import namespace="http://example.com/football" schemaLocation="football-service.xsd"/>
+        </xsd:schema>
     </types>
 
     <message name="GetCompetitionRequestMessage">

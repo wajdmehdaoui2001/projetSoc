@@ -17,7 +17,7 @@ public class FootballSoapEndpoint {
 
     @PayloadRoot(namespace = "http://example.com/football", localPart = "GetCompetitionRequest")
     @ResponsePayload
-    public GetCompetitionResponse getCompetition(@RequestPayload GetCompetitionRequest request) {
+    public GetCompetitionResponse GetCompetition(@RequestPayload GetCompetitionRequest request) {
         // Appeler le service FootballData pour obtenir les données
         GetCompetitionResponse response = new GetCompetitionResponse();
         response.setName("Competition Example");
