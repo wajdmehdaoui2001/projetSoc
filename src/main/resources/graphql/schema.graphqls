@@ -1,9 +1,3 @@
 type Query {
-    getCompetition(competitionId: String!): Competition
-}
-
-type Competition {
-    id: String
-    name: String
-    area: String
+    getCompetitions: String
 }
